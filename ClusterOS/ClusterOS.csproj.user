@@ -11,10 +11,28 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
-    <Page Update="Windows\ClusterDock.xaml">
+    <Page Update="Views\TasksView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\WinTracker.xaml">
+    <Page Update="Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CMSView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\JournalView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DockView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\DockWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TrackerView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

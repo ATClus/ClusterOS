@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -13,8 +13,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Views\WinTracker.xaml" />
-    <None Remove="Windows\ClusterDock.xaml" />
+    <None Remove="Views\CMSView.xaml" />
+    <None Remove="Views\DockView.xaml" />
+    <None Remove="Views\HomeView.xaml" />
+    <None Remove="Views\JournalView.xaml" />
+    <None Remove="Views\SettingsView.xaml" />
+    <None Remove="Views\TasksView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,14 +49,50 @@
     <PackageReference Include="System.Drawing.Common" Version="9.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\WinTracker.xaml">
+    <Page Update="Views\TasksView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Windows\ClusterDock.xaml">
+    <Page Update="Views\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\CMSView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\JournalView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\DockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\HomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\TrackerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Windows\DockWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrayServiceLib\TrayServiceLib.csproj" />
   </ItemGroup>
 
   <!--

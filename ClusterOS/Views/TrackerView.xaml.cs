@@ -2,9 +2,9 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace ClusterOS.Views
 {
-    public sealed partial class WinTracker : Page
+    public sealed partial class TrackerView : Page
     {
-        public WinTracker()
+        public TrackerView()
         {
             this.InitializeComponent();
         }

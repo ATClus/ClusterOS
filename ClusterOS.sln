@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClusterOS", "ClusterOS\ClusterOS.csproj", "{C3D00056-4BD7-4273-A057-55A1786E4973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrayServiceLib", "TrayServiceLib\TrayServiceLib.csproj", "{FFEF38CC-F018-445C-891B-00DE0D09FCD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,18 @@ Global
 		{C3D00056-4BD7-4273-A057-55A1786E4973}.Release|x86.ActiveCfg = Release|x86
 		{C3D00056-4BD7-4273-A057-55A1786E4973}.Release|x86.Build.0 = Release|x86
 		{C3D00056-4BD7-4273-A057-55A1786E4973}.Release|x86.Deploy.0 = Release|x86
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Debug|x64.Build.0 = Debug|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Debug|x86.Build.0 = Debug|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Release|ARM64.Build.0 = Release|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Release|x64.ActiveCfg = Release|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Release|x64.Build.0 = Release|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Release|x86.ActiveCfg = Release|Any CPU
+		{FFEF38CC-F018-445C-891B-00DE0D09FCD5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

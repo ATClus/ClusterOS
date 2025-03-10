@@ -2,3 +2,6 @@
 ClusterOS/bin
 ClusterOS/obj
 ClusterOS/Properties
+TrayServiceLib/bin
+TrayServiceLib/obj
+TrayServiceLib/Properties

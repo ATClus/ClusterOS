@@ -14,11 +14,11 @@ using ClusterOS.Helpers;
 
 namespace ClusterOS.Windows
 {
-    public sealed partial class ClusterDock : Window
+    public sealed partial class DockWindow : Window
     {
         private List<ShortcutData> shortcuts = new List<ShortcutData>();
 
-        public ClusterDock()
+        public DockWindow()
         {
             this.InitializeComponent();
             this.ExtendsContentIntoTitleBar = true;

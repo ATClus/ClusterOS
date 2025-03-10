@@ -9,13 +9,37 @@
     mc:Ignorable="d"
     Title="ClusterOS"
     xmlns:Views="using:ClusterOS.Views"
-    xmlns:Windows="üsing:ClusterOS.Windows">
+    xmlns:Windows="using:ClusterOS.Windows">
 
-    <Grid x:Name="Root" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
-        <Views:WinTracker />
-        <Button x:Name="ClusterDock"
-                Content="Open Cluster Dock"
-                Click="OpenClusterDock" />
-    </Grid>
+    <NavigationView x:Name="Nav"
+                    SelectionChanged="Navigation"
+                    IsBackButtonVisible="Collapsed"
+                    IsPaneToggleButtonVisible="False"
+                    IsPaneOpen="True"
+                    OpenPaneLength="200">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="Home" 
+                                Icon="Home"
+                                Tag="HomeView"/>
+            <NavigationViewItem Content="Tracker"
+                                Icon="Clock"
+                                Tag="TrackerView"/>
+            <NavigationViewItem Content="Dock"
+                                Icon="Manage"
+                                Tag="DockView" />
+            <NavigationViewItem Content="Journal"
+                                Icon="Page"
+                                Tag="JournalView"/>
+            <NavigationViewItem Content="Tasks"
+                                Icon="Target"
+                                Tag="TasksView"/>
+            <NavigationViewItem Content="CMS"
+                                Icon="Admin"
+                                Tag="CMSView"/>
+        </NavigationView.MenuItems>
+
+        <Frame x:Name="Root" 
+               Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+    </NavigationView>
     
 </Window>
