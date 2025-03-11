@@ -13,10 +13,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\CMSCreateView.xaml" />
+    <None Remove="Views\CMSEditView.xaml" />
     <None Remove="Views\CMSView.xaml" />
     <None Remove="Views\DockView.xaml" />
     <None Remove="Views\HomeView.xaml" />
     <None Remove="Views\JournalView.xaml" />
+    <None Remove="Views\SettingsCMSView.xaml" />
+    <None Remove="Views\SettingsGeneralView.xaml" />
     <None Remove="Views\SettingsView.xaml" />
     <None Remove="Views\TasksView.xaml" />
   </ItemGroup>
@@ -93,6 +97,26 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TrayServiceLib\TrayServiceLib.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\CMSEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\CMSCreateView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\SettingsGeneralView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\SettingsCMSView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!--

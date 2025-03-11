@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Title="ClusterOS"
     xmlns:Views="using:ClusterOS.Views"
-    xmlns:Windows="using:ClusterOS.Windows">
+    xmlns:Windows="using:ClusterOS.AppsWindows">
 
     <NavigationView x:Name="Nav"
                     SelectionChanged="Navigation"

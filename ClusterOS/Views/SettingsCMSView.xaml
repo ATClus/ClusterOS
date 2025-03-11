@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ClusterOS.Views.SettingsCMSView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClusterOS.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Spacing="15">
+            <TextBlock Text="Configuração de Endpoints CMS" 
+                       FontSize="24" 
+                       FontWeight="SemiBold" />
+
+            <TextBlock Text="Selecione o Método:" />
+            <ComboBox x:Name="cmbMethod" PlaceholderText="Selecione o método">
+                <ComboBoxItem Content="GET" />
+                <ComboBoxItem Content="POST" />
+                <ComboBoxItem Content="DELETE" />
+            </ComboBox>
+
+            <TextBlock Text="Link do Endpoint:" />
+            <TextBox x:Name="txtEndpointLink" 
+                     PlaceholderText="https://api.exemplo.com/endpoint" />
+
+            <TextBlock Text="Função:" />
+            <TextBox x:Name="txtFunction" 
+                     PlaceholderText="Nome da função" />
+
+            <Button Content="Adicionar Endpoint" 
+                    Click="AddEndpoint_Click"/>
+        </StackPanel>
+
+        <ListView x:Name="lvEndpoints" Grid.Row="1" Margin="0,20">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Endpoint">
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Vertical">
+                            <TextBlock Text="{x:Bind Method}" FontWeight="Bold"/>
+                            <TextBlock Text="{x:Bind Function}" FontStyle="Italic"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="{x:Bind Link}" 
+                                   VerticalAlignment="Center" Margin="10,0"/>
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10">
+                            <Button Content="Editar" Click="EditEndpoint_Click"/>
+                            <Button Content="Remover" Click="RemoveEndpoint_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="2" Content="Salvar Configurações" 
+                Click="SaveConfigurations_Click"
+                HorizontalAlignment="Center" Margin="0,10,0,0"/>
+    </Grid>
+</Page>
