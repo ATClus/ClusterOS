@@ -2,6 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
 using Windows.Storage;
+using System.Text.Json;
 
 namespace ClusterOS.Views
 {
@@ -27,19 +28,18 @@ namespace ClusterOS.Views
         private void LoadEndpoints()
         {
             Endpoints.Clear();
-            if (localSettings.Values.TryGetValue("CMS_EndpointCount", out object countObj) &&
-                int.TryParse(countObj.ToString(), out int count))
+            if (localSettings.Values.TryGetValue("CMS_Endpoints", out object jsonObj))
             {
-                for (int i = 0; i < count; i++)
+                string json = jsonObj?.ToString();
+                if (!string.IsNullOrWhiteSpace(json))
                 {
-                    string method = localSettings.Values[$"CMS_Endpoint_{i}_Method"]?.ToString();
-                    string link = localSettings.Values[$"CMS_Endpoint_{i}_Link"]?.ToString();
-                    string function = localSettings.Values[$"CMS_Endpoint_{i}_Function"]?.ToString();
-                    if (!string.IsNullOrWhiteSpace(method) &&
-                        !string.IsNullOrWhiteSpace(link) &&
-                        !string.IsNullOrWhiteSpace(function))
+                    var endpointsFromSettings = JsonSerializer.Deserialize<ObservableCollection<Endpoint>>(json);
+                    if (endpointsFromSettings != null)
                     {
-                        Endpoints.Add(new Endpoint { Method = method, Link = link, Function = function });
+                        foreach (var endpoint in endpointsFromSettings)
+                        {
+                            Endpoints.Add(endpoint);
+                        }
                     }
                 }
             }
@@ -57,9 +57,10 @@ namespace ClusterOS.Views
             {
                 ContentDialog dialog = new ContentDialog
                 {
-                    Title = "Atenção",
-                    Content = "Todos os campos devem ser preenchidos para adicionar um endpoint.",
-                    CloseButtonText = "Ok"
+                    Title = "Attention",
+                    Content = "All fields must be filled to add an endpoint.",
+                    CloseButtonText = "Ok",
+                    XamlRoot = this.XamlRoot
                 };
                 _ = dialog.ShowAsync();
                 return;
@@ -101,20 +102,15 @@ namespace ClusterOS.Views
 
         private void SaveConfigurations_Click(object sender, RoutedEventArgs e)
         {
-            localSettings.Values["CMS_EndpointCount"] = Endpoints.Count;
-
-            for (int i = 0; i < Endpoints.Count; i++)
-            {
-                localSettings.Values[$"CMS_Endpoint_{i}_Method"] = Endpoints[i].Method;
-                localSettings.Values[$"CMS_Endpoint_{i}_Link"] = Endpoints[i].Link;
-                localSettings.Values[$"CMS_Endpoint_{i}_Function"] = Endpoints[i].Function;
-            }
+            string json = JsonSerializer.Serialize(Endpoints);
+            localSettings.Values["CMS_Endpoints"] = json;
 
             ContentDialog successDialog = new ContentDialog
             {
-                Title = "Sucesso",
-                Content = "Configurações salvas com sucesso.",
-                CloseButtonText = "Ok"
+                Title = "Success",
+                Content = "Configurations saved successfully.",
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot
             };
             _ = successDialog.ShowAsync();
         }

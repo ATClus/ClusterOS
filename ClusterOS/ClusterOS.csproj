@@ -93,9 +93,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\TrayServiceLib\TrayServiceLib.csproj" />
   </ItemGroup>
   <ItemGroup>

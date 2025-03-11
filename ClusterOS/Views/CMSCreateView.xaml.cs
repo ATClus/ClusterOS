@@ -1,55 +1,64 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using ClusterOS.Services;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ClusterOS.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class CMSCreateView : Page
     {
+        private readonly CMSService cmsService = new CMSService();
+
         public CMSCreateView()
         {
             this.InitializeComponent();
+            this.Loaded += CMSCreateView_Loaded;
+        }
+
+        private async void CMSCreateView_Loaded(object sender, RoutedEventArgs e)
+        {
+            await LoadCategoriesAsync();
+        }
+
+        private async Task LoadCategoriesAsync()
+        {
+            try
+            {
+                List<Category> categories = await cmsService.GetCategoriesAsync();
+                cmbCategory.Items.Clear();
+                foreach (var category in categories)
+                {
+                    cmbCategory.Items.Add(new ComboBoxItem { Content = category.name });
+                }
+            }
+            catch (Exception ex)
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Error",
+                    Content = ex.Message,
+                    CloseButtonText = "Ok",
+                    XamlRoot = this.XamlRoot
+                };
+                await dialog.ShowAsync();
+            }
         }
 
         private void SavePost_Click(object sender, RoutedEventArgs e)
         {
-            // Leitura dos dados dos campos
-            string title = txtTitle.Text;
-            string category = (cmbCategory.SelectedItem as ComboBoxItem)?.Content.ToString();
-            string summary = txtSummary.Text;
-            string contentPT = txtContentPT.Text;
-            string contentEN = txtContentEN.Text;
-            string author = txtAuthor.Text;
-
-            // TODO: Integração com os endpoints configurados
-            // Exemplo: chamar o endpoint de criação com os dados coletados
+            // Implemente a lógica para salvar o post aqui.
+            // Exemplo: ler os valores dos campos, validar e enviar para o endpoint configurado.
 
             ContentDialog dialog = new ContentDialog
             {
-                Title = "Sucesso",
-                Content = "Post salvo com sucesso.",
-                CloseButtonText = "Ok"
+                Title = "Success",
+                Content = "Post saved successfully.",
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot
             };
             _ = dialog.ShowAsync();
-
-            // Opcional: limpar os campos ou navegar para outra view
         }
     }
 }
