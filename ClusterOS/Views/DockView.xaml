@@ -17,21 +17,23 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Spacing="12">
-            <TextBlock Text="Configurações do Dock" FontSize="24" FontWeight="Bold"/>
-            <TextBlock Text="Personalize seu Dock conforme sua preferência" Opacity="0.7"/>
+            <TextBlock Text="Dock Settings" FontSize="24" FontWeight="Bold"/>
+            <TextBlock Text="Customize your Dock according to your preferences" Opacity="0.7"/>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,20,0,0">
-            <StackPanel Spacing="24">
-                <Expander Header="Atalhos" IsExpanded="True">
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" Margin="0,20,0,0" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Spacing="24">
+
+                <Expander Header="Shortcuts" IsExpanded="True" Width="300">
                     <StackPanel Spacing="12">
-                        <TextBlock Text="Arraste para reordenar os atalhos:" Margin="0,0,0,8"/>
+                        <TextBlock Text="Drag to reorder shortcuts:" Margin="0,0,0,8"/>
+
                         <ListView x:Name="ShortcutsListView" 
-                              SelectionMode="Single" 
-                              CanReorderItems="True"
-                              AllowDrop="True" 
-                              CanDragItems="True"
-                              Height="200">
+                                  SelectionMode="Single" 
+                                  CanReorderItems="True"
+                                  AllowDrop="True" 
+                                  CanDragItems="True"
+                                  Height="200">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="local:ShortcutItem">
                                     <Grid>
@@ -43,71 +45,75 @@
                                         <Image Source="{x:Bind IconPath}" Width="24" Height="24" Margin="0,0,12,0"/>
                                         <TextBlock Grid.Column="1" Text="{x:Bind Name}" VerticalAlignment="Center"/>
                                         <Button Grid.Column="2" x:Name="RemoveButton" Content="&#xE74D;" 
-                                            FontFamily="Segoe MDL2 Assets" 
-                                            Click="RemoveShortcut_Click"
-                                            Tag="{x:Bind Id}"/>
+                                                FontFamily="Segoe MDL2 Assets" 
+                                                Click="RemoveShortcut_Click"
+                                                Tag="{x:Bind Id}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Content="Adicionar" Click="AddShortcut_Click" Margin="0,0,8,0"/>
-                            <Button Content="Salvar Ordem" Click="SaveShortcutOrder_Click"/>
+                            <Button Content="Add" Click="AddShortcut_Click" Margin="0,0,8,0"/>
+                            <Button Content="Save Order" Click="SaveShortcutOrder_Click"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
 
-                <Expander Header="Aparência" IsExpanded="False">
+                <Expander Header="Appearance" IsExpanded="False" Width="300">
                     <StackPanel Spacing="16">
                         <StackPanel>
-                            <TextBlock Text="Posição do Dock" Margin="0,0,0,8"/>
+                            <TextBlock Text="Dock Position" Margin="0,0,0,8"/>
                             <ComboBox x:Name="DockPositionComboBox" SelectedIndex="0" Width="200" HorizontalAlignment="Left">
-                                <ComboBoxItem Content="Inferior"/>
-                                <ComboBoxItem Content="Superior"/>
-                                <ComboBoxItem Content="Esquerda"/>
-                                <ComboBoxItem Content="Direita"/>
+                                <ComboBoxItem Content="Bottom"/>
+                                <ComboBoxItem Content="Top"/>
+                                <ComboBoxItem Content="Left"/>
+                                <ComboBoxItem Content="Right"/>
                             </ComboBox>
                         </StackPanel>
 
                         <StackPanel>
-                            <TextBlock Text="Tamanho dos ícones" Margin="0,0,0,8"/>
+                            <TextBlock Text="Icon Size" Margin="0,0,0,8"/>
                             <Slider x:Name="IconSizeSlider" Minimum="24" Maximum="64" Value="48" Width="200" 
-                                HorizontalAlignment="Left" TickFrequency="8" TickPlacement="Outside"/>
+                                    HorizontalAlignment="Left" TickFrequency="8" TickPlacement="Outside"/>
                             <TextBlock Text="{x:Bind IconSizeSlider.Value, Mode=OneWay}" Margin="8,0,0,0"/>
                         </StackPanel>
 
                         <StackPanel>
-                            <TextBlock Text="Estilo visual" Margin="0,0,0,8"/>
+                            <TextBlock Text="Visual Style" Margin="0,0,0,8"/>
                             <ComboBox x:Name="DockStyleComboBox" SelectedIndex="0" Width="200" HorizontalAlignment="Left">
-                                <ComboBoxItem Content="Moderno"/>
-                                <ComboBoxItem Content="Clássico"/>
-                                <ComboBoxItem Content="Minimalista"/>
+                                <ComboBoxItem Content="Modern"/>
+                                <ComboBoxItem Content="Classic"/>
+                                <ComboBoxItem Content="Minimalistic"/>
                             </ComboBox>
                         </StackPanel>
 
                         <StackPanel>
-                            <TextBlock Text="Transparência" Margin="0,0,0,8"/>
+                            <TextBlock Text="Transparency" Margin="0,0,0,8"/>
                             <Slider x:Name="TransparencySlider" Minimum="0" Maximum="1" Value="0.2" StepFrequency="0.1" 
-                                Width="200" HorizontalAlignment="Left"/>
+                                    Width="200" HorizontalAlignment="Left"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
 
-                <Expander Header="Comportamento" IsExpanded="False">
+                <Expander Header="Behavior" IsExpanded="False" Width="300">
                     <StackPanel Spacing="16">
-                        <ToggleSwitch x:Name="AutoHideToggle" Header="Ocultar automaticamente" OnContent="Ligado" OffContent="Desligado"/>
-                        <ToggleSwitch x:Name="AnimationsToggle" Header="Animações" IsOn="True" OnContent="Ligado" OffContent="Desligado"/>
-                        <ToggleSwitch x:Name="MagnificationToggle" Header="Efeito de ampliação ao passar o mouse" IsOn="True" OnContent="Ligado" OffContent="Desligado"/>
+                        <ToggleSwitch x:Name="AutoHideToggle" Header="Auto-hide" 
+                                      OnContent="On" OffContent="Off"/>
+                        <ToggleSwitch x:Name="AnimationsToggle" Header="Animations" IsOn="True" 
+                                      OnContent="On" OffContent="Off"/>
+                        <ToggleSwitch x:Name="MagnificationToggle" Header="Magnification effect on hover" IsOn="True" 
+                                      OnContent="On" OffContent="Off"/>
                     </StackPanel>
                 </Expander>
+
             </StackPanel>
         </ScrollViewer>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0" Spacing="12">
-            <Button Content="Iniciar Dock" Click="OpenClusterDock" Width="150"/>
-            <Button Content="Aplicar Configurações" Click="ApplySettings_Click" Width="180"/>
-            <Button Content="Restaurar Padrões" Click="RestoreDefaults_Click" Width="150"/>
+            <Button Content="Start Dock" Click="OpenClusterDock" Width="150"/>
+            <Button Content="Apply Settings" Click="ApplySettings_Click" Width="180"/>
+            <Button Content="Restore Defaults" Click="RestoreDefaults_Click" Width="150"/>
         </StackPanel>
     </Grid>
 </Page>
