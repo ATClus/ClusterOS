@@ -24,14 +24,22 @@
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
+
                     <StackPanel Grid.Column="0" Spacing="5">
                         <TextBlock Text="Category:"/>
                         <ComboBox x:Name="cmbCategory" PlaceholderText="Select category"/>
                     </StackPanel>
-                    <StackPanel Grid.Column="1" Spacing="5">
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom" Spacing="5">
+                        <TextBlock Text="Highlight:" VerticalAlignment="Center"/>
+                        <ToggleSwitch x:Name="tglHighlight" OffContent="False" OnContent="True" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Spacing="5">
                         <TextBlock Text="Author:"/>
                         <TextBox x:Name="txtAuthor" PlaceholderText="Post author"/>
                     </StackPanel>
@@ -41,7 +49,6 @@
                 <TextBox x:Name="txtSummary" PlaceholderText="Post summary" AcceptsReturn="True" Height="80"/>
 
                 <TextBlock Text="Content:"/>
-
                 <Grid ColumnSpacing="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
