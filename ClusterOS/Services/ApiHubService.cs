@@ -31,6 +31,7 @@ namespace ClusterOS.Services
                 options.UseSqlite($"Data Source={dbPath}"));
             services.AddScoped<ITabRepository, TabRepository>();
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
+            services.AddScoped<ITrackDataRepository, TrackDataRepository>();
             services.AddCors(options =>
             {
                 options.AddPolicy("BrowserPolicy", policy =>
@@ -66,6 +67,7 @@ namespace ClusterOS.Services
             {
                 endpoints.MapHub<TabFocus>("/tabfocused");
                 endpoints.MapHub<AppFocusHub>("/appfocused");
+                endpoints.MapTrackDataEndpoints();
             });
         }
     }

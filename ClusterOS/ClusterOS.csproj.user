@@ -7,6 +7,14 @@
     <AppxShowAllApps>False</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x64</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+    <Source>E:\resources\ClusterAT\logo.png</Source>
+    <SmallTileSource>E:\resources\ClusterAT\logo.png</SmallTileSource>
+    <MediumTileSource>E:\resources\ClusterAT\logo.png</MediumTileSource>
+    <WideTileSource>E:\resources\ClusterAT\logo.png</WideTileSource>
+    <LargeTileSource>E:\resources\ClusterAT\logo.png</LargeTileSource>
+    <AppIconSource>E:\resources\ClusterAT\logo.png</AppIconSource>
+    <SplashScreenSource>E:\resources\ClusterAT\logo.png</SplashScreenSource>
+    <PackageLogoSource>E:\resources\ClusterAT\logo.png</PackageLogoSource>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

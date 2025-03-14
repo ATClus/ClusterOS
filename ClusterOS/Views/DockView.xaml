@@ -10,29 +10,23 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Padding="20">
-        <!-- Linha 0: Título e descrição -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Linha 1: Expanders ocupando todo o espaço disponível -->
             <RowDefinition Height="*"/>
-            <!-- Linha 2: Barra de botões inferior -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Cabeçalho -->
         <StackPanel Grid.Row="0" Spacing="12">
             <TextBlock Text="Dock Settings" FontSize="24" FontWeight="Bold"/>
             <TextBlock Text="Customize your Dock according to your preferences" Opacity="0.7"/>
         </StackPanel>
 
-        <!-- Área central com ScrollViewer para caso de overflow -->
         <ScrollViewer Grid.Row="1"
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalAlignment="Stretch"
                       VerticalAlignment="Stretch">
 
-            <!-- Grid para distribuir os três Expanders igualmente -->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -40,27 +34,25 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Expander: Shortcuts -->
                 <Expander Header="Shortcuts"
-          IsExpanded="True"
-          Grid.Column="0"
-          HorizontalAlignment="Stretch"
-          HorizontalContentAlignment="Stretch"
-          VerticalAlignment="Stretch"
-          VerticalContentAlignment="Stretch">
+                          IsExpanded="True"
+                          Grid.Column="0"
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          VerticalContentAlignment="Stretch">
 
                     <StackPanel Spacing="12" Margin="10">
                         <TextBlock Text="Drag to reorder shortcuts:" Margin="0,0,0,8"/>
 
-                        <!-- Aumentar o espaço disponível da lista -->
                         <ListView x:Name="ShortcutsListView"
-                  SelectionMode="Single"
-                  CanReorderItems="True"
-                  AllowDrop="True"
-                  CanDragItems="True"
-                  MinHeight="300"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch">
+                                  SelectionMode="Single"
+                                  CanReorderItems="True"
+                                  AllowDrop="True"
+                                  CanDragItems="True"
+                                  MinHeight="300"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="local:ShortcutItem">
                                     <Grid>
@@ -71,71 +63,65 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <!-- Ícone do atalho -->
                                         <Image Source="{x:Bind IconPath}"
-                               Width="24"
-                               Height="24"
-                               Margin="0,0,12,0"/>
+                                               Width="24"
+                                               Height="24"
+                                               Margin="0,0,12,0"/>
 
-                                        <!-- Nome do atalho -->
                                         <TextBlock Grid.Column="1"
-                                   Text="{x:Bind Name}"
-                                   VerticalAlignment="Center"/>
+                                                   Text="{x:Bind Name}"
+                                                   VerticalAlignment="Center"/>
 
-                                        <!-- Botões de reordenação -->
                                         <StackPanel Grid.Column="2"
-                                    Orientation="Vertical"
-                                    HorizontalAlignment="Center"
-                                    Spacing="4">
-                                            <!-- Botão "Move Up" -->
+                                                    Orientation="Vertical"
+                                                    HorizontalAlignment="Center"
+                                                    Spacing="4">
                                             <Button Width="32"
-                                    Height="32"
+                                                    Height="32"
                                                     Padding="0"
-                                    Background="{ThemeResource SystemAccentColor}"
-                                    CornerRadius="4"
-                                    Click="MoveUp_Click"
-                                    Tag="{x:Bind Id}">
+                                                    Background="{ThemeResource SystemAccentColor}"
+                                                    CornerRadius="4"
+                                                    Click="MoveUp_Click"
+                                                    Tag="{x:Bind Id}">
                                                 <FontIcon Glyph="&#xE70E;"
-                                                    Foreground="White"
-                                          FontSize="14"/>
-                                                    <ToolTipService.ToolTip>
+                                                          Foreground="White"
+                                                          FontSize="14"/>
+                                                <ToolTipService.ToolTip>
                                                         <ToolTip Content="Move Up"/>
                                                     </ToolTipService.ToolTip>
                                             </Button>
 
-                                            <!-- Botão "Move Down" -->
                                             <Button Width="32"
-                                    Height="32"
+                                                    Height="32"
                                                     Padding="0"
-                                    Background="{ThemeResource SystemAccentColor}"
-                                    CornerRadius="4"
-                                    Click="MoveDown_Click"
-                                    Tag="{x:Bind Id}">
+                                                    Background="{ThemeResource SystemAccentColor}"
+                                                    CornerRadius="4"
+                                                    Click="MoveDown_Click"
+                                                    Tag="{x:Bind Id}">
                                                 <FontIcon Glyph="&#xE70D;"
-                                                    Foreground="White"
-                                          FontSize="14"/>
+                                                          Foreground="White"
+                                                          FontSize="14"/>
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip Content="Move Down"/>
                                                     </ToolTipService.ToolTip>
                                             </Button>
                                         </StackPanel>
 
-                                        <!-- Botão para remover -->
                                         <Button Grid.Column="3"
-                                x:Name="RemoveButton"
-                                Width="36"
-                                Height="36"
-                                Padding="0"
-                                Margin="4,0,0,0"
-                                Background="{ThemeResource SystemAccentColor}"
-                                CornerRadius="4"
-                                HorizontalContentAlignment="Center"
-                                VerticalContentAlignment="Center"
-                                Click="RemoveShortcut_Click"
-                                Tag="{x:Bind Id}">
+                                                x:Name="RemoveButton"
+                                                Width="36"
+                                                Height="36"
+                                                Padding="0"
+                                                Margin="4,0,0,0"
+                                                Background="{ThemeResource SystemAccentColor}"
+                                                CornerRadius="4"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Click="RemoveShortcut_Click"
+                                                Tag="{x:Bind Id}">
                                             <FontIcon Glyph="&#xE74D;"
-                                                Foreground="White"
-                                      FontSize="16"/>
+                                                      Foreground="White"
+                                                      FontSize="16"/>
                                                 <ToolTipService.ToolTip>
                                                     <ToolTip Content="Remove shortcut"/>
                                                 </ToolTipService.ToolTip>
@@ -152,7 +138,6 @@
                     </StackPanel>
                 </Expander>
 
-                <!-- Expander: Appearance -->
                 <Expander Header="Appearance"
                           IsExpanded="False"
                           Grid.Column="1"
@@ -214,7 +199,6 @@
                     </StackPanel>
                 </Expander>
 
-                <!-- Expander: Behavior -->
                 <Expander Header="Behavior"
                           IsExpanded="False"
                           Grid.Column="2"
@@ -243,7 +227,6 @@
             </Grid>
         </ScrollViewer>
 
-        <!-- Barra de botões inferior -->
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"

@@ -12,11 +12,8 @@ namespace ClusterOS.Views
 {
     public sealed partial class CMSEditView : Page
     {
-        // Lista filtrada para exibição na UI
         public ObservableCollection<ArticleModel> Articles { get; set; } = new ObservableCollection<ArticleModel>();
-        // Lista completa obtida da API
         private List<ArticleModel> AllArticles { get; set; } = new List<ArticleModel>();
-        // Lista de categorias carregadas
         private List<CategoryModel> Categories { get; set; } = new List<CategoryModel>();
 
         private readonly CMSService cmsService = new CMSService();

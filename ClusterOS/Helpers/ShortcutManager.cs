@@ -66,7 +66,7 @@ namespace ClusterOS.Helpers
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Erro ao carregar atalhos: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error loading shortcuts: {ex.Message}");
                 return CreateDefaultShortcuts();
             }
         }
@@ -75,9 +75,7 @@ namespace ClusterOS.Helpers
         {
             return new List<ShortcutData>
             {
-                new ShortcutData { Path = "ms-settings:", Name = "Settings", Order = 0 },
-                new ShortcutData { Path = "explorer.exe", Name = "File Explorer", Order = 1 },
-                new ShortcutData { Path = "msedge.exe", Name = "Microsoft Edge", Order = 2 }
+                new ShortcutData { Path = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe", Name = "Microsoft Edge", Order = 0 }
             };
         }
 
@@ -99,15 +97,7 @@ namespace ClusterOS.Helpers
 
                 if (filePath.Contains("edge") || filePath.EndsWith("msedge.exe"))
                 {
-                    iconFile = await Package.Current.InstalledLocation.GetFileAsync("Assets\\Icons\\edge.png");
-                }
-                else if (filePath.Contains("explorer") || filePath.EndsWith("explorer.exe"))
-                {
-                    iconFile = await Package.Current.InstalledLocation.GetFileAsync("Assets\\Icons\\explorer.png");
-                }
-                else if (filePath.Contains("settings"))
-                {
-                    iconFile = await Package.Current.InstalledLocation.GetFileAsync("Assets\\Icons\\settings.png");
+                    iconFile = await Package.Current.InstalledLocation.GetFileAsync("Assets\\Icons\\logo.png");
                 }
                 else
                 {

@@ -13,6 +13,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\Icons\logo.png" />
+    <Content Remove="Assets\loco 176x176.png" />
+    <Content Remove="Assets\logo 44x44.png" />
+    <Content Remove="Assets\logo 88x88.png" />
+    <Content Remove="Assets\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Views\CMSCreateView.xaml" />
     <None Remove="Views\CMSEditView.xaml" />
     <None Remove="Views\CMSView.xaml" />
@@ -31,7 +38,6 @@
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
 

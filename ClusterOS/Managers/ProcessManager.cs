@@ -168,7 +168,6 @@ namespace ClusterOS.Managers
                     }
                 }
 
-                // Ativa a animação de carregamento
                 progressRing.Visibility = Visibility.Visible;
                 progressRing.IsActive = true;
 
@@ -178,7 +177,6 @@ namespace ClusterOS.Managers
                     UseShellExecute = true
                 };
 
-                // Captura o dispatcher da thread da UI
                 var dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
                 var processStarted = Process.Start(startInfo);
@@ -217,7 +215,6 @@ namespace ClusterOS.Managers
                         }
                     }
 
-                    // Finaliza a animação de carregamento
                     dispatcherQueue.TryEnqueue(() =>
                     {
                         progressRing.Visibility = Visibility.Collapsed;
@@ -234,7 +231,6 @@ namespace ClusterOS.Managers
                 }
                 else
                 {
-                    // Caso o processo não seja iniciado, desativa a animação
                     dispatcherQueue.TryEnqueue(() =>
                     {
                         progressRing.Visibility = Visibility.Collapsed;

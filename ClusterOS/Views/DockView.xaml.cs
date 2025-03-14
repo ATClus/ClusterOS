@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
-using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace ClusterOS.Views
 {
@@ -209,7 +208,6 @@ namespace ClusterOS.Views
         {
             if (sender is Button button && button.Tag is string id)
             {
-                // Obtém o índice do item na coleção
                 var item = shortcutItems.FirstOrDefault(s => s.Id == id);
                 if (item != null)
                 {
@@ -227,7 +225,6 @@ namespace ClusterOS.Views
         {
             if (sender is Button button && button.Tag is string id)
             {
-                // Obtém o índice do item na coleção
                 var item = shortcutItems.FirstOrDefault(s => s.Id == id);
                 if (item != null)
                 {
@@ -240,6 +237,5 @@ namespace ClusterOS.Views
                 }
             }
         }
-
     }
 }

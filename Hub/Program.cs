@@ -27,6 +27,7 @@ builder.Services.AddDbContext<HubDbContext>(options =>
     options.UseSqlite($"Data Source={dbPath}"));
 builder.Services.AddScoped<ITabRepository, TabRepository>();
 builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
+builder.Services.AddScoped<ITrackDataRepository, TrackDataRepository>();
 builder.Services.AddCors(options =>
 {    
     options.AddPolicy("BrowserPolicy", policy =>
@@ -49,9 +50,11 @@ var app = builder.Build();
 app.UseWebSockets();
 app.UseCors("BrowserPolicy");
 app.UseHttpsRedirection();
+app.UseRouting();
 
 app.MapGet("/", () => "SignalR server running");
 app.MapHub<TabFocus>("/tabfocused");
 app.MapHub<AppFocusHub>("/appfocused");
+app.MapTrackDataEndpoints();
 
 app.Run();
