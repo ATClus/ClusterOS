@@ -5,3 +5,11 @@ ClusterOS/Properties
 TrayServiceLib/bin
 TrayServiceLib/obj
 TrayServiceLib/Properties
+Hub/bin
+Hub/obj
+Hub/Properties
+WinTracker/bin
+WinTracker/obj
+WinTracker/Properties
+*.pfx
+*/.config

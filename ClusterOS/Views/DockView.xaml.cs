@@ -28,6 +28,11 @@ namespace ClusterOS.Views
         public DockView()
         {
             this.InitializeComponent();
+            this.Loaded += DockView_Loaded;
+        }
+
+        private void DockView_Loaded(object sender, RoutedEventArgs e)
+        {
             localSettings = ApplicationData.Current.LocalSettings;
             shortcutItems = new ObservableCollection<ShortcutItem>();
             ShortcutsListView.ItemsSource = shortcutItems;
@@ -191,5 +196,50 @@ namespace ClusterOS.Views
 
             SaveSettings();
         }
+
+        private void StopDock_Click(object sender, RoutedEventArgs e)
+        {
+            if (DockWindow.Current != null)
+            {
+                DockWindow.Current.Close();
+            }
+        }
+
+        private void MoveUp_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string id)
+            {
+                // Obtém o índice do item na coleção
+                var item = shortcutItems.FirstOrDefault(s => s.Id == id);
+                if (item != null)
+                {
+                    int index = shortcutItems.IndexOf(item);
+                    if (index > 0)
+                    {
+                        shortcutItems.Move(index, index - 1);
+                        SaveShortcutOrder_Click(null, null);
+                    }
+                }
+            }
+        }
+
+        private void MoveDown_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string id)
+            {
+                // Obtém o índice do item na coleção
+                var item = shortcutItems.FirstOrDefault(s => s.Id == id);
+                if (item != null)
+                {
+                    int index = shortcutItems.IndexOf(item);
+                    if (index < shortcutItems.Count - 1)
+                    {
+                        shortcutItems.Move(index, index + 1);
+                        SaveShortcutOrder_Click(null, null);
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -78,7 +78,7 @@ namespace ClusterOS.AppsWindows
                 presenter.IsAlwaysOnTop = true;
             }
 
-            processManager = new ProcessManager();
+            processManager = new ProcessManager(this, appWindow);
             SetupGlobalHotkey();
             LoadSavedShortcuts();
         }

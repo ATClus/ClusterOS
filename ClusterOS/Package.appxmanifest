@@ -8,15 +8,15 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="9bca8d37-12d1-45ed-9931-826f2fbd9285"
-    Publisher="CN=jaalv"
-    Version="1.0.0.0" />
+    Name="ClusterAT.ClusterOS"
+    Publisher="CN=ClusterAT"
+    Version="1.0.9.0" />
 
   <mp:PhoneIdentity PhoneProductId="9bca8d37-12d1-45ed-9931-826f2fbd9285" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ClusterOS</DisplayName>
-    <PublisherDisplayName>jaalv</PublisherDisplayName>
+    <PublisherDisplayName>ClusterAT</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

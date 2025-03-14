@@ -23,8 +23,8 @@ namespace ClusterOS.Helpers
 
     public static class ShortcutManager
     {
-        private const string ShortcutsFileName = "shortcuts.json";
-        private const string IconsFolder = "ShortcutIcons";
+        private const string ShortcutsFileName = "DockShortcuts.json";
+        private const string IconsFolder = "DockShortcutIcons";
 
         public static async Task SaveShortcutsAsync(List<ShortcutData> shortcuts)
         {

@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Shapes;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing;
 using ClusterOS.InteropPro;
 
 namespace ClusterOS.Managers
@@ -17,7 +18,14 @@ namespace ClusterOS.Managers
         private static Dictionary<string, int> activeProcesses = new Dictionary<string, int>();
         private bool isDockOnTop = true;
         private bool isDockVisible = true;
-        private Microsoft.UI.Windowing.AppWindow appWindow;
+        private readonly AppWindow appWindow;
+        private readonly Window currentWindow;
+
+        public ProcessManager(Window currentWindow, AppWindow appWindow)
+        {
+            this.currentWindow = currentWindow;
+            this.appWindow = appWindow;
+        }
 
         public void MinimizeRestoreApplication(string extractedProcessName)
         {
@@ -90,14 +98,14 @@ namespace ClusterOS.Managers
             {
                 string extractedProcessName = ExtractProcessName(path);
                 var browserProcesses = new Dictionary<string, string>
-        {
-            { "chrome", "chrome" },
-            { "msedge", "msedge" },
-            { "firefox", "firefox" },
-            { "opera", "opera" },
-            { "brave", "brave" },
-            { "zen", "zen" }
-        };
+                {
+                    { "chrome", "chrome" },
+                    { "msedge", "msedge" },
+                    { "firefox", "firefox" },
+                    { "opera", "opera" },
+                    { "brave", "brave" },
+                    { "zen", "zen" }
+                };
 
                 string expectedProcessName = browserProcesses
                     .Where(b => extractedProcessName.Contains(b.Key))
@@ -247,19 +255,19 @@ namespace ClusterOS.Managers
 
         public void DockToggleZOrder()
         {
-            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(Window.Current);
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(currentWindow);
             if (isDockOnTop)
             {
                 NativeMethods.SetWindowPos(hwnd, NativeMethods.HWND_BOTTOM, 0, 0, 0, 0,
                     NativeMethods.SWP_NOMOVE | NativeMethods.SWP_NOSIZE);
-                if (appWindow.Presenter is Microsoft.UI.Windowing.OverlappedPresenter presenter)
+                if (appWindow.Presenter is OverlappedPresenter presenter)
                     presenter.IsAlwaysOnTop = false;
             }
             else
             {
                 NativeMethods.SetWindowPos(hwnd, NativeMethods.HWND_TOPMOST, 0, 0, 0, 0,
                     NativeMethods.SWP_NOMOVE | NativeMethods.SWP_NOSIZE);
-                if (appWindow.Presenter is Microsoft.UI.Windowing.OverlappedPresenter presenter)
+                if (appWindow.Presenter is OverlappedPresenter presenter)
                     presenter.IsAlwaysOnTop = true;
             }
             isDockOnTop = !isDockOnTop;
@@ -267,7 +275,7 @@ namespace ClusterOS.Managers
 
         public void DockToggleVisibility()
         {
-            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(Window.Current);
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(currentWindow);
             if (isDockVisible)
                 NativeMethods.ShowWindow(hwnd, NativeMethods.SW_HIDE);
             else
