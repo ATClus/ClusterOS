@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinTracker", "WinTracker\Wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hub", "Hub\Hub.csproj", "{E3573D15-7578-4D21-92C9-A8570758E2BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkdownLib", "MarkdownLib\MarkdownLib.csproj", "{186897A3-201C-4ACE-9063-88E821B9EB10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -105,6 +107,24 @@ Global
 		{E3573D15-7578-4D21-92C9-A8570758E2BD}.Release|x64.Build.0 = Release|Any CPU
 		{E3573D15-7578-4D21-92C9-A8570758E2BD}.Release|x86.ActiveCfg = Release|Any CPU
 		{E3573D15-7578-4D21-92C9-A8570758E2BD}.Release|x86.Build.0 = Release|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Debug|x64.Build.0 = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Debug|x86.Build.0 = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.DevDebug|ARM64.ActiveCfg = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.DevDebug|ARM64.Build.0 = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.DevDebug|x64.ActiveCfg = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.DevDebug|x64.Build.0 = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.DevDebug|x86.ActiveCfg = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.DevDebug|x86.Build.0 = Debug|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Release|ARM64.Build.0 = Release|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Release|x64.ActiveCfg = Release|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Release|x64.Build.0 = Release|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Release|x86.ActiveCfg = Release|Any CPU
+		{186897A3-201C-4ACE-9063-88E821B9EB10}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

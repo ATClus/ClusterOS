@@ -79,7 +79,8 @@
                                             <Button Width="32"
                                                     Height="32"
                                                     Padding="0"
-                                                    Background="{ThemeResource SystemAccentColor}"
+                                                    Background="#0078D4"
+                                                    Foreground="White"
                                                     CornerRadius="4"
                                                     Click="MoveUp_Click"
                                                     Tag="{x:Bind Id}">
@@ -94,7 +95,8 @@
                                             <Button Width="32"
                                                     Height="32"
                                                     Padding="0"
-                                                    Background="{ThemeResource SystemAccentColor}"
+                                                    Background="#0078D4"
+                                                    Foreground="White"
                                                     CornerRadius="4"
                                                     Click="MoveDown_Click"
                                                     Tag="{x:Bind Id}">
@@ -113,7 +115,8 @@
                                                 Height="36"
                                                 Padding="0"
                                                 Margin="4,0,0,0"
-                                                Background="{ThemeResource SystemAccentColor}"
+                                                Background="#0078D4"
+                                                Foreground="White"
                                                 CornerRadius="4"
                                                 HorizontalContentAlignment="Center"
                                                 VerticalContentAlignment="Center"
@@ -132,8 +135,14 @@
                         </ListView>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Content="Add" Click="AddShortcut_Click" Margin="0,0,8,0"/>
-                            <Button Content="Save Order" Click="SaveShortcutOrder_Click"/>
+                            <Button Content="Add" 
+                                    Background="#0078D4"
+                                    Foreground="White"
+                                    Click="AddShortcut_Click" Margin="0,0,8,0"/>
+                            <Button Content="Save Order" 
+                                    Background="#0078D4"
+                                    Foreground="White"
+                                    Click="SaveShortcutOrder_Click"/>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
@@ -234,16 +243,24 @@
                     Spacing="12">
             <Button Content="Start Dock"
                     Click="OpenClusterDock"
-                    Width="150"/>
+                    Width="150"
+                    Background="#0078D4"
+                    Foreground="White"/>
             <Button Content="Stop Dock"
                     Click="StopDock_Click"
-                    Width="150"/>
+                    Width="150"
+                    Background="#0078D4"
+                    Foreground="White"/>
             <Button Content="Apply Settings"
                     Click="ApplySettings_Click"
-                    Width="180"/>
+                    Width="180"
+                    Background="#0078D4"
+                    Foreground="White"/>
             <Button Content="Restore Defaults"
                     Click="RestoreDefaults_Click"
-                    Width="150"/>
+                    Width="150"
+                    Background="#0078D4"
+                    Foreground="White"/>
         </StackPanel>
     </Grid>
 </Page>

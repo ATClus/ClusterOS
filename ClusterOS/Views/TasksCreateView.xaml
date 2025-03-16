@@ -27,8 +27,14 @@
             </ComboBox>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,20,0,0">
-                <Button Content="Cancel" Click="Cancel_Click"/>
-                <Button Content="Salve" Click="SaveTask_Click"/>
+                <Button Content="Cancel" 
+                        Click="Cancel_Click"
+                        Background="#0078D4"
+                        Foreground="White"/>
+                <Button Content="Salve" 
+                        Click="SaveTask_Click"
+                        Background="#0078D4"
+                        Foreground="White"/>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -22,8 +22,14 @@
                     <DataTemplate x:DataType="model:ArticleModel">
                         <StackPanel Orientation="Horizontal" Spacing="10">
                             <TextBlock Text="{x:Bind title}" FontWeight="Bold" Margin="0,6,0,0"/>
-                            <Button Content="Edit" Click="EditPost_Click"/>
-                            <Button Content="Remove" Click="RemovePost_Click"/>
+                            <Button Content="Edit" 
+                                    Click="EditPost_Click"
+                                    Background="#0078D4"
+                                    Foreground="White"/>
+                            <Button Content="Remove" 
+                                    Click="RemovePost_Click"
+                                    Background="#0078D4"
+                                    Foreground="White"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

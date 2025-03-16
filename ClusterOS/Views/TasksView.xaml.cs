@@ -1,37 +1,43 @@
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
-using Hub.Domain;
 using System.Collections.ObjectModel;
-using System.Net.Http;
-using System.Net.Http.Json;
+using ClusterOS.Services;
+using ClusterOS.Models;
 
 namespace ClusterOS.Views
 {
     public sealed partial class TasksView : Page
     {
         public ObservableCollection<TaskItem> Tasks { get; } = new ObservableCollection<TaskItem>();
-
-        private readonly HttpClient _httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:5000") };
+        private readonly TaskService _taskService = new TaskService();
 
         public TasksView()
         {
             this.InitializeComponent();
+            LoadTasksAsync();
             TasksRoot.Navigate(typeof(TasksListView));
         }
 
-        private void TasksSelectorBar_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+        private async void LoadTasksAsync()
         {
-            if (sender.SelectedItem is SelectorBarItem selectedItem)
+            try
             {
-                if (selectedItem == DisplayTasksItem)
+                var tasks = await _taskService.GetTasksAsync();
+                foreach (var task in tasks)
                 {
-                    TasksRoot.Navigate(typeof(TasksListView));
-                }
-                else if (selectedItem == CreateEditTaskItem)
-                {
-                    TasksRoot.Navigate(typeof(TasksCreateView));
+                    Tasks.Add(task);
                 }
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading tasks: {ex.Message}");
+            }
+        }
+
+        private void CreateTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            TasksRoot.Navigate(typeof(TasksCreateView));
         }
     }
 }

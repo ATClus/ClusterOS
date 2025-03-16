@@ -12,22 +12,22 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
             <TextBlock Text="Welcome To ClusterOS" 
-                   FontSize="42" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Center" />
+                       FontSize="42" 
+                       FontWeight="Bold" 
+                       HorizontalAlignment="Center" />
 
             <TextBlock Text="Manage, analyze, and enhance your productivity"
-                   FontSize="20"
-                   HorizontalAlignment="Center"
-                   Opacity="0.7" />
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       Opacity="0.7" />
 
             <Button Content="Start Now"
-                Padding="20,8"
-                FontSize="16"
-                HorizontalAlignment="Center"
-                CornerRadius="8"
-                Background="#0078D4"
-                Foreground="White"/>
+                    Padding="20,8"
+                    FontSize="16"
+                    HorizontalAlignment="Center"
+                    CornerRadius="8"
+                    Background="#0078D4"
+                    Foreground="White"/>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="15">
             <HyperlinkButton Content="Documentation" NavigateUri="https://os.clusterat.com/docs"/>

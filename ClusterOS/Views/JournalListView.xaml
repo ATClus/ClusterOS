@@ -16,7 +16,11 @@
                 <DataTemplate x:DataType="model:Journal">
                     <StackPanel Orientation="Horizontal" Spacing="10">
                         <TextBlock Text="{x:Bind Created.Date}" />
-                        <Button Content="View" Click="ViewButton_Click" VerticalAlignment="Center"/>
+                        <Button Content="View" 
+                                Background="#0078D4"
+                                Foreground="White"
+                                Click="ViewButton_Click" 
+                                VerticalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

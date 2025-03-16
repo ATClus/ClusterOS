@@ -30,7 +30,10 @@
             <TextBox x:Name="TabUrlFilterTextBox" Width="200" TextChanged="FilterTextBox_TextChanged"/>
             <TextBlock Text="Date:" VerticalAlignment="Center"/>
             <DatePicker x:Name="DateFilterPicker" Width="150" DateChanged="DateFilterPicker_DateChanged"/>
-            <Button Content="Clear" Click="ClearFiltersButton_Click"/>
+            <Button Content="Clear" 
+                    Background="#0078D4"
+                    Foreground="White"
+                    Click="ClearFiltersButton_Click"/>
         </StackPanel>
 
         <Grid Grid.Row="1" Padding="4">
