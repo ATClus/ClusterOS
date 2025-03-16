@@ -32,7 +32,7 @@ namespace ClusterOS.Views
         {
             try
             {
-                DateTime today = DateTime.UtcNow.Date;
+                DateTime today = DateTime.Now.Date;
                 JournalTitleTextBlock.Text = today.ToString("d");
 
                 Journal todayJournal = null;

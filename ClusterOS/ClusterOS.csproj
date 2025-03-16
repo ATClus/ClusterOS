@@ -11,7 +11,7 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
-    <Configurations>Debug;Release;DevDebug</Configurations>
+    <Configurations>Debug;Release;</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='DevDebug'">
 	<AppxManifest>Package.Dev.appxmanifest</AppxManifest>
@@ -44,7 +44,7 @@
     <None Remove="Views\TasksView.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.Dev.appxmanifest">
+    <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
   </ItemGroup>
