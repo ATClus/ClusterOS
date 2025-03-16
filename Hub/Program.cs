@@ -28,6 +28,8 @@ builder.Services.AddDbContext<HubDbContext>(options =>
 builder.Services.AddScoped<ITabRepository, TabRepository>();
 builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
 builder.Services.AddScoped<ITrackDataRepository, TrackDataRepository>();
+builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
+builder.Services.AddScoped<IJournalRepository, JournalRepository>();
 builder.Services.AddCors(options =>
 {    
     options.AddPolicy("BrowserPolicy", policy =>
@@ -56,5 +58,7 @@ app.MapGet("/", () => "SignalR server running");
 app.MapHub<TabFocus>("/tabfocused");
 app.MapHub<AppFocusHub>("/appfocused");
 app.MapTrackDataEndpoints();
+app.MapTaskEndpoints();
+app.MapJournalEndpoints();
 
 app.Run();

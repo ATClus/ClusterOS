@@ -13,3 +13,5 @@ WinTracker/obj
 WinTracker/Properties
 *.pfx
 */.config
+
+ClusterOS/hub.db

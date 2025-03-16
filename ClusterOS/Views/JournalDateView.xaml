@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ClusterOS.Views.JournalDateView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClusterOS.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="20">
+        <StackPanel>
+            <Button Content="Voltar" Click="BackButton_Click" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+            <TextBlock x:Name="TitleTextBlock" FontSize="24" Margin="0,0,0,10"/>
+            <TextBlock x:Name="ContentTextBlock" FontSize="16" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Grid>
+</Page>

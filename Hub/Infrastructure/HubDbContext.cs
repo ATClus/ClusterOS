@@ -13,6 +13,8 @@ namespace Hub.Infrastructure
         public DbSet<Tab> Tabs { get; set; }
         public DbSet<ApplicationOS> Applications { get; set; }
         public DbSet<TimeEntry> TimeEntries { get; set; }
+        public DbSet<TaskItem> TaskItems { get; set; }
+        public DbSet<Journal> Journals { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -65,6 +67,37 @@ namespace Hub.Infrastructure
                       .OnDelete(DeleteBehavior.Cascade)
                       .IsRequired(false);
             });
+
+            modelBuilder.Entity<TaskItem>(entity =>
+            {
+                entity.HasKey(t => t.Id);
+                entity.Property(t => t.Title)
+                      .IsRequired()
+                      .HasMaxLength(200);
+                entity.Property(t => t.Description)
+                      .IsRequired();
+                entity.Property(t => t.Priority)
+                      .IsRequired();
+                entity.Property(t => t.CreatedAt)
+                      .IsRequired();
+                entity.Property(t => t.UpdatedAt)
+                      .IsRequired(false);
+            });
+
+            modelBuilder.Entity<Journal>(entity =>
+            {
+                entity.HasKey(j => j.Id);
+                entity.Property(j => j.Content)
+                      .IsRequired()
+                      .HasMaxLength(2000);
+                entity.Property(j => j.Created)
+                      .IsRequired();
+                entity.Property(j => j.Updated)
+                      .IsRequired(false);
+                entity.HasIndex(j => j.Created)
+                      .IsUnique();
+            });
+
         }
     }
 }

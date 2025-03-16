@@ -26,16 +26,19 @@ namespace ClusterOS
 
             m_window.DispatcherQueue.TryEnqueue(async () =>
             {
+                var port = System.Diagnostics.Debugger.IsAttached ? "7132" : "7131";
+                var url = $"https://localhost:{port}";
+
                 _webHost = Host.CreateDefaultBuilder()
                     .ConfigureWebHostDefaults(webBuilder =>
                     {
                         webBuilder.UseStartup<ApiHubService>()
-                                  .UseUrls("https://localhost:7131");
+                                  .UseUrls(url);
                     })
                     .Build();
 
                 await _webHost.StartAsync();
-                await ShowNotificationAsync("Hub Started", "The tracker will automatically start");
+                await ShowNotificationAsync("Hub Started", "The tracker will automatically start.");
             });
         }
 

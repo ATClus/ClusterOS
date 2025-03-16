@@ -11,6 +11,13 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;DevDebug</Configurations>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='DevDebug'">
+	<AppxManifest>Package.Dev.appxmanifest</AppxManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'!='DevDebug'">
+	<AppxManifest>Package.appxmanifest</AppxManifest>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\Icons\logo.png" />
@@ -25,11 +32,21 @@
     <None Remove="Views\CMSView.xaml" />
     <None Remove="Views\DockView.xaml" />
     <None Remove="Views\HomeView.xaml" />
+    <None Remove="Views\JournalDateView.xaml" />
+    <None Remove="Views\JournalEditView.xaml" />
+    <None Remove="Views\JournalListView.xaml" />
     <None Remove="Views\JournalView.xaml" />
     <None Remove="Views\SettingsCMSView.xaml" />
     <None Remove="Views\SettingsGeneralView.xaml" />
     <None Remove="Views\SettingsView.xaml" />
+    <None Remove="Views\TasksCreateView.xaml" />
+    <None Remove="Views\TasksListView.xaml" />
     <None Remove="Views\TasksView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.Dev.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +71,10 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.3" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.250228001" />
@@ -105,6 +126,31 @@
     <ProjectReference Include="..\WinTracker\WinTracker.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\JournalEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\JournalListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\JournalDateView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\TasksListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\TasksCreateView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\CMSEditView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,8 +183,10 @@
   <!-- Publish Properties -->
   <PropertyGroup>
     <PublishReadyToRun Condition="'$(Configuration)' == 'Debug'">False</PublishReadyToRun>
+    <PublishReadyToRun Condition="'$(Configuration)'=='DevDebug'">False</PublishReadyToRun>
     <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">True</PublishReadyToRun>
     <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
+    <PublishTrimmed Condition="'$(Configuration)'=='DevDebug'">False</PublishTrimmed>
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>

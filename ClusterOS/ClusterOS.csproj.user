@@ -19,6 +19,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DevDebug|x64'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
   <ItemGroup>
     <None Update="App.xaml">
       <SubType>Designer</SubType>
@@ -29,6 +32,21 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="Views\JournalEditView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\JournalListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\JournalDateView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TasksListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TasksCreateView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\CMSEditView.xaml">
       <SubType>Designer</SubType>
     </Page>

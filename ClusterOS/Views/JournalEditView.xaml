@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ClusterOS.Views.JournalEditView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClusterOS.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="JournalTitleTextBlock"
+                   Grid.Row="0"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+            <Button Content="B"
+                    Click="BoldButton_Click"
+                    FontWeight="Bold"
+                    Width="40"
+                    Height="40"/>
+            <Button Content="I"
+                    Click="ItalicButton_Click"
+                    FontStyle="Italic"
+                    Width="40"
+                    Height="40"/>
+            <ComboBox x:Name="FontSizeComboBox"
+                      Width="80"
+                      SelectionChanged="FontSizeComboBox_SelectionChanged">
+                <ComboBoxItem Content="10"/>
+                <ComboBoxItem Content="12" 
+                              IsSelected="True"/>
+                <ComboBoxItem Content="14"/>
+                <ComboBoxItem Content="16"/>
+                <ComboBoxItem Content="18"/>
+                <ComboBoxItem Content="20"/>
+            </ComboBox>
+            <Button Content="• List"
+                    Click="BulletListButton_Click"
+                    Width="80"
+                    Height="40"/>
+            <TextBlock x:Name="AutoSaveStatusTextBlock"
+                       Grid.Row="0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Foreground="Gray"
+                       Visibility="Collapsed"
+                       Margin="0,0,20,0"/>
+        </StackPanel>
+
+        <RichEditBox x:Name="JournalRichEditBox"
+                     Grid.Row="2"
+                     AcceptsReturn="True"
+                     TextChanged="JournalRichEditBox_TextChanged"/>
+    </Grid>
+</Page>
