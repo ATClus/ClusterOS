@@ -11,7 +11,7 @@
   <Identity
     Name="ClusterAT.ClusterOS"
     Publisher="CN=ClusterAT"
-    Version="1.0.13.0" />
+    Version="1.0.14.0" />
 
   <mp:PhoneIdentity PhoneProductId="9bca8d37-12d1-45ed-9931-826f2fbd9285" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
