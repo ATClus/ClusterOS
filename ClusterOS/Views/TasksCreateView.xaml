@@ -26,6 +26,13 @@
                 <ComboBoxItem Content="High"/>
             </ComboBox>
 
+            <TextBlock Text="Status:"/>
+            <ComboBox x:Name="StatusComboBox" SelectedIndex="0">
+                <ComboBoxItem Content="TODO"/>
+                <ComboBoxItem Content="DOING"/>
+                <ComboBoxItem Content="DONE"/>
+            </ComboBox>
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10" Margin="0,20,0,0">
                 <Button Content="Cancel" 
                         Click="Cancel_Click"

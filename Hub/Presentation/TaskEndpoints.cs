@@ -32,7 +32,7 @@ namespace Hub.Presentation
                 if (existingTask is null)
                     return Results.NotFound();
 
-                existingTask.Update(task.Title, task.Description, task.Priority);
+                existingTask.Update(task.Title, task.Description, task.Priority, task.Status);
                 await repository.UpdateAsync(existingTask);
                 return Results.Ok(existingTask);
             });

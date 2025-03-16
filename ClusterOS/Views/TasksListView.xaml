@@ -21,11 +21,12 @@
                        FontSize="24"
                        FontWeight="Bold"
                        Margin="0,0,0,20"/>
-            <Grid Width="1300" Padding="10" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
+            <Grid Width="1380" Padding="10" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="250"/>
                     <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="150"/>
@@ -35,10 +36,11 @@
                 <TextBlock Grid.Column="0" Text="ID" FontWeight="Bold"/>
                 <TextBlock Grid.Column="1" Text="Title" FontWeight="Bold"/>
                 <TextBlock Grid.Column="2" Text="Description" FontWeight="Bold"/>
-                <TextBlock Grid.Column="3" Text="Priority" FontWeight="Bold"/>
-                <TextBlock Grid.Column="4" Text="Created At" FontWeight="Bold"/>
-                <TextBlock Grid.Column="5" Text="Updated At" FontWeight="Bold"/>
-                <TextBlock Grid.Column="6" Text="Actions" FontWeight="Bold"/>
+                <TextBlock Grid.Column="3" Text="Status" FontWeight="Bold"/>
+                <TextBlock Grid.Column="4" Text="Priority" FontWeight="Bold"/>
+                <TextBlock Grid.Column="5" Text="Created At" FontWeight="Bold"/>
+                <TextBlock Grid.Column="6" Text="Updated At" FontWeight="Bold"/>
+                <TextBlock Grid.Column="7" Text="Actions" FontWeight="Bold"/>
             </Grid>
         </StackPanel>
 
@@ -48,11 +50,12 @@
                   IsItemClickEnabled="False">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:TaskItem">
-                    <Grid Width="1300" Padding="10">
+                    <Grid Width="1380" Padding="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="250"/>
                             <ColumnDefinition Width="500"/>
+                            <ColumnDefinition Width="80"/>
                             <ColumnDefinition Width="80"/>
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="150"/>
@@ -62,11 +65,12 @@
                         <TextBlock Grid.Column="0" Text="{x:Bind id, Mode=OneWay}"/>
                         <TextBlock Grid.Column="1" Text="{x:Bind title, Mode=OneWay}"/>
                         <TextBlock Grid.Column="2" Text="{x:Bind description, Mode=OneWay}"/>
-                        <TextBlock Grid.Column="3" Text="{x:Bind priority, Mode=OneWay}"/>
-                        <TextBlock Grid.Column="4" Text="{x:Bind createdAt, Mode=OneWay}"/>
-                        <TextBlock Grid.Column="5" Text="{x:Bind updatedAt, Mode=OneWay}"/>
+                        <TextBlock Grid.Column="3" Text="{x:Bind status, Mode=OneWay}"/>
+                        <TextBlock Grid.Column="4" Text="{x:Bind priority, Mode=OneWay}"/>
+                        <TextBlock Grid.Column="5" Text="{x:Bind createdAt, Mode=OneWay}"/>
+                        <TextBlock Grid.Column="6" Text="{x:Bind updatedAt, Mode=OneWay}"/>
 
-                        <StackPanel Grid.Column="6" Orientation="Horizontal">
+                        <StackPanel Grid.Column="7" Orientation="Horizontal">
                             <Button Content="Edit"
                                     Click="EditTask_Click"
                                     Tag="{x:Bind id, Mode=OneWay}"

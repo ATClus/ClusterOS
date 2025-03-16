@@ -28,6 +28,7 @@ namespace ClusterOS.Views
                     TitleTextBox.Text = task.title;
                     DescriptionTextBox.Text = task.description;
                     PriorityComboBox.SelectedIndex = (int)task.priority;
+                    StatusComboBox.SelectedIndex = (int)task.status;
                     editingTaskId = taskId;
                 }
                 catch (Exception ex)
@@ -44,12 +45,12 @@ namespace ClusterOS.Views
                 if (editingTaskId.HasValue)
                 {
                     var task = await _taskService.GetTaskByIdAsync(editingTaskId.Value);
-                    task.Update(TitleTextBox.Text, DescriptionTextBox.Text, (Priority)PriorityComboBox.SelectedIndex);
+                    task.Update(TitleTextBox.Text, DescriptionTextBox.Text, (Priority)PriorityComboBox.SelectedIndex, (TaskItemStatus)StatusComboBox.SelectedIndex);
                     await _taskService.UpdateTaskAsync(editingTaskId.Value, task);
                 }
                 else
                 {
-                    var task = new TaskItem(TitleTextBox.Text, DescriptionTextBox.Text, (Priority)PriorityComboBox.SelectedIndex);
+                    var task = new TaskItem(TitleTextBox.Text, DescriptionTextBox.Text, (Priority)PriorityComboBox.SelectedIndex, (TaskItemStatus)StatusComboBox.SelectedIndex);
                     await _taskService.SaveTaskAsync(task);
                 }
 

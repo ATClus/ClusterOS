@@ -12,6 +12,8 @@ namespace Hub.Application
         public string Description { get; set; }
         [Required]
         public Priority Priority { get; set; }
+        [Required]
+        public TaskItemStatus Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

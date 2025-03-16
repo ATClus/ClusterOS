@@ -78,6 +78,8 @@ namespace Hub.Infrastructure
                       .IsRequired();
                 entity.Property(t => t.Priority)
                       .IsRequired();
+                entity.Property(t => t.Status)
+                      .IsRequired();
                 entity.Property(t => t.CreatedAt)
                       .IsRequired();
                 entity.Property(t => t.UpdatedAt)
