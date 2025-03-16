@@ -11,6 +11,9 @@ Hub/Properties
 WinTracker/bin
 WinTracker/obj
 WinTracker/Properties
+MarkdownLib/bin
+MarkdownLib/obj
+MarkdownLib/Properties
 *.pfx
 */.config
 

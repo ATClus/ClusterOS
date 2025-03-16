@@ -98,12 +98,16 @@ namespace ClusterOS.Views
                     return;
                 }
 
+                var markdownParser = new MarkdownLib.Parser.MarkdownParser();
+                string parsedContentPT = markdownParser.Parse(txtContentPT.Text);
+                string parsedContentEN = markdownParser.Parse(txtContentEN.Text);
+
                 ArticleModel article = new ArticleModel
                 {
                     title = txtTitle.Text,
                     summary = txtSummary.Text,
-                    contentPT = txtContentPT.Text,
-                    contentEN = txtContentEN.Text,
+                    contentPT = parsedContentPT,
+                    contentEN = parsedContentEN,
                     author = txtAuthor.Text,
                     categoryId = categoryId,
                     isPublished = false,
