@@ -30,7 +30,7 @@ ClusterOS is a WINUI/.NET 8.0 application designed to provide a comprehensive su
 ### Building the Project
 
 1. Clone the repository:
-    git clone https://github.com/yourusername/ClusterOS.git
+    git clone https://github.com/ATClus/ClusterOS.git
 cd ClusterOS
 
 2. Open the solution in Visual Studio 2022.
