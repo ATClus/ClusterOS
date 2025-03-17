@@ -20,7 +20,8 @@ namespace MarkdownLib.Parser
                 return string.Empty;
 
             // Split content into lines
-            var lines = markdown.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+            var lines = markdown.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.None);
+
             var sb = new StringBuilder();
 
             // Block states
