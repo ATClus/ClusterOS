@@ -23,6 +23,7 @@ namespace ClusterOS.Views
             this.InitializeComponent();
             lvEndpoints.ItemsSource = Endpoints;
             LoadEndpoints();
+            LoadToken();
         }
 
         private void LoadEndpoints()
@@ -43,6 +44,28 @@ namespace ClusterOS.Views
                     }
                 }
             }
+        }
+
+        private void LoadToken()
+        {
+            if (localSettings.Values.TryGetValue("CMS_ApiToken", out object tokenObj))
+            {
+                txtApiToken.Text = tokenObj?.ToString();
+            }
+        }
+
+        private void SaveToken_Click(object sender, RoutedEventArgs e)
+        {
+            localSettings.Values["CMS_ApiToken"] = txtApiToken.Text;
+
+            ContentDialog successDialog = new ContentDialog
+            {
+                Title = "Success",
+                Content = "API token saved successfully.",
+                CloseButtonText = "Ok",
+                XamlRoot = this.XamlRoot
+            };
+            _ = successDialog.ShowAsync();
         }
 
         private void AddEndpoint_Click(object sender, RoutedEventArgs e)
