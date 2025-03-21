@@ -41,6 +41,9 @@ namespace ClusterOS.AppsWindows
         private const uint MOD_WIN = 0x0008;
         private const uint VK_D = 0x44;
         private const uint VK_Z = 0x5A;
+        private const int GWL_EXSTYLE = -20;
+        private const int WS_EX_TOOLWINDOW = 0x00000080;
+        private const int WS_EX_APPWINDOW = 0x00040000;
 
         public DockWindow()
         {
@@ -49,6 +52,7 @@ namespace ClusterOS.AppsWindows
             this.Closed += DockWindow_Closed;
             this.ExtendsContentIntoTitleBar = true;
             SystemBackdrop = new DesktopAcrylicBackdrop();
+            HideWindowFromTaskbar();
 
             var hwnd = WindowNative.GetWindowHandle(this);
             var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
@@ -81,6 +85,15 @@ namespace ClusterOS.AppsWindows
             processManager = new ProcessManager(this, appWindow);
             SetupGlobalHotkey();
             LoadSavedShortcuts();
+        }
+
+        private void HideWindowFromTaskbar()
+        {
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            int exStyle = NativeMethods.GetWindowLong(hwnd, GWL_EXSTYLE);
+            exStyle &= ~WS_EX_APPWINDOW;
+            exStyle |= WS_EX_TOOLWINDOW;
+            NativeMethods.SetWindowLong(hwnd, GWL_EXSTYLE, exStyle);
         }
 
         private void LoadConfigFromSettings()

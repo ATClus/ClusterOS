@@ -68,9 +68,9 @@ namespace ClusterOS.InteropPro
         }
 
         [DllImport("user32.dll", SetLastError = true)]
-        private static extern IntPtr GetWindowThreadProcessId(IntPtr hWnd, out int processId);
+        public static extern IntPtr GetWindowThreadProcessId(IntPtr hWnd, out int processId);
 
-        private static IntPtr GetWindowHandleFromThread(int threadId)
+        public static IntPtr GetWindowHandleFromThread(int threadId)
         {
             IntPtr hWnd = IntPtr.Zero;
             EnumThreadWindows(threadId, (hWndTemp, lParam) =>
@@ -82,9 +82,9 @@ namespace ClusterOS.InteropPro
         }
 
         [DllImport("user32.dll")]
-        private static extern bool EnumThreadWindows(int dwThreadId, EnumThreadDelegate lpfn, IntPtr lParam);
+        public static extern bool EnumThreadWindows(int dwThreadId, EnumThreadDelegate lpfn, IntPtr lParam);
 
-        private delegate bool EnumThreadDelegate(IntPtr hWnd, IntPtr lParam);
+        public delegate bool EnumThreadDelegate(IntPtr hWnd, IntPtr lParam);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
