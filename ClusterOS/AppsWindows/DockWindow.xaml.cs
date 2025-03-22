@@ -18,6 +18,7 @@ using Microsoft.UI.Xaml.Input;
 using Windows.ApplicationModel.DataTransfer;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.Foundation;
+using System.Threading.Tasks;
 
 namespace ClusterOS.AppsWindows
 {
@@ -25,6 +26,7 @@ namespace ClusterOS.AppsWindows
     {
         private List<ShortcutData> shortcuts = new List<ShortcutData>();
         public static DockWindow Current { get; private set; }
+        public bool AutoHideEnabled { get; set; } = false;
         private AppWindow appWindow;
         private ProcessManager processManager;
         private const double PanelPadding = 8.0;
@@ -44,15 +46,29 @@ namespace ClusterOS.AppsWindows
         private const int GWL_EXSTYLE = -20;
         private const int WS_EX_TOOLWINDOW = 0x00000080;
         private const int WS_EX_APPWINDOW = 0x00040000;
+        private const int WS_EX_LAYERED = 0x00080000;
+        private const int LWA_ALPHA = 0x00000002;
+        private DispatcherTimer idleTimer;
+        private bool isTransparent = false;
+        private const byte FULL_OPACITY = 255;
+        private const byte LOW_OPACITY = 50;
 
-        public DockWindow()
+        public DockWindow(bool autoHideEnabled)
         {
+            AutoHideEnabled = autoHideEnabled;
+
             this.InitializeComponent();
             Current = this;
             this.Closed += DockWindow_Closed;
             this.ExtendsContentIntoTitleBar = true;
             SystemBackdrop = new DesktopAcrylicBackdrop();
+
             HideWindowFromTaskbar();
+
+            if (AutoHideEnabled)
+            {
+                InitializeAutoHideBehavior();
+            }
 
             var hwnd = WindowNative.GetWindowHandle(this);
             var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
@@ -89,11 +105,78 @@ namespace ClusterOS.AppsWindows
 
         private void HideWindowFromTaskbar()
         {
-            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            var hwnd = WindowNative.GetWindowHandle(this);
             int exStyle = NativeMethods.GetWindowLong(hwnd, GWL_EXSTYLE);
             exStyle &= ~WS_EX_APPWINDOW;
             exStyle |= WS_EX_TOOLWINDOW;
             NativeMethods.SetWindowLong(hwnd, GWL_EXSTYLE, exStyle);
+        }
+
+        private void InitializeAutoHideBehavior()
+        {
+            idleTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
+            idleTimer.Tick += IdleTimer_Tick;
+            idleTimer.Start();
+
+            if (this.Content is FrameworkElement rootElement)
+            {
+                rootElement.PointerEntered += RootElement_PointerEntered;
+                rootElement.PointerMoved += RootElement_PointerMoved;
+                rootElement.PointerExited += RootElement_PointerExited;
+            }
+        }
+
+        public void SetWindowTransparency(byte alpha)
+        {
+            var hwnd = WindowNative.GetWindowHandle(this);
+            int exStyle = NativeMethods.GetWindowLong(hwnd, GWL_EXSTYLE);
+            NativeMethods.SetWindowLong(hwnd, GWL_EXSTYLE, exStyle | WS_EX_LAYERED);
+            NativeMethods.SetLayeredWindowAttributes(hwnd, 0, alpha, LWA_ALPHA);
+        }
+
+        private async Task GraduallyReduceTransparencyAsync(byte fromAlpha, byte toAlpha, int steps, int delayMilliseconds)
+        {
+            for (int i = 0; i <= steps; i++)
+            {
+                float progress = (float)i / steps;
+                byte newAlpha = (byte)(fromAlpha - ((fromAlpha - toAlpha) * progress));
+                SetWindowTransparency(newAlpha);
+                await Task.Delay(delayMilliseconds);
+            }
+            SetWindowTransparency(toAlpha);
+        }
+
+        private async void IdleTimer_Tick(object sender, object e)
+        {
+            await GraduallyReduceTransparencyAsync(255, 50, steps: 20, delayMilliseconds: 15);
+            isTransparent = true;
+            idleTimer.Stop();
+        }
+
+        private void RootElement_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            if (isTransparent)
+            {
+                SetWindowTransparency(FULL_OPACITY);
+                isTransparent = false;
+            }
+            ResetIdleTimer();
+        }
+
+        private void RootElement_PointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            ResetIdleTimer();
+        }
+
+        private void RootElement_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            ResetIdleTimer();
+        }
+
+        private void ResetIdleTimer()
+        {
+            idleTimer.Stop();
+            idleTimer.Start();
         }
 
         private void LoadConfigFromSettings()

@@ -43,7 +43,7 @@ namespace ClusterOS.Views
         private void OpenClusterDock(object sender, RoutedEventArgs e)
         {
             SaveSettings();
-            var clusterDockerWindow = new DockWindow();
+            var clusterDockerWindow = new DockWindow(AutoHideToggle.IsOn);
             clusterDockerWindow.Activate();
         }
 
@@ -179,7 +179,7 @@ namespace ClusterOS.Views
                 DockWindow.Current.Close();
             }
 
-            var newDock = new DockWindow();
+            var newDock = new DockWindow(AutoHideToggle.IsOn);
             newDock.Activate();
         }
 
