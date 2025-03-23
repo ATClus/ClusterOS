@@ -60,11 +60,11 @@
 
         <Grid Grid.Row="1" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="62"/>
-                <ColumnDefinition MinWidth="260"/>
-                <ColumnDefinition MinWidth="260"/>
-                <ColumnDefinition MinWidth="160"/>
-                <ColumnDefinition MinWidth="110"/>
+                <ColumnDefinition Width="62"/>
+                <ColumnDefinition Width="260"/>
+                <ColumnDefinition Width="260"/>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="110"/>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" BorderBrush="LightGray" BorderThickness="1 1 1 3" Padding="5">
                 <TextBlock Text="ID" Padding="5" FontWeight="Bold"/>
@@ -83,37 +83,49 @@
             </Border>
         </Grid>
 
-        <ListView x:Name="TrackDataListView" Grid.Row="2" BorderBrush="LightGoldenrodYellow" BorderThickness="1">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:TrackDataItemModel">
-                    <Border BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 0 2" Padding="0" Margin="-16 0 -16 0">
-                        <Grid HorizontalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition MinWidth="50"/>
-                                <ColumnDefinition MinWidth="250"/>
-                                <ColumnDefinition MinWidth="250"/>
-                                <ColumnDefinition MinWidth="150"/>
-                                <ColumnDefinition MinWidth="100"/>
-                            </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 1 0" Margin="0 0 15 0" Padding="5">
-                                <TextBlock Text="{x:Bind Id}" Margin="-10 0 0 0" Padding="0" HorizontalAlignment="Left"/>
-                            </Border>
-                            <Border Grid.Column="1" BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 1 0" Margin="0 0 6 0" Padding="5">
-                                <TextBlock Text="{x:Bind AppTitle}" Margin="-5 0 0 0" Padding="0 0 0 0" HorizontalAlignment="Left"/>
-                            </Border>
-                            <Border Grid.Column="2" BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 1 0" Margin="0 0 -4 0" Padding="5">
-                                <TextBlock Text="{x:Bind TabUrl}" Margin="5 0 0 0" Padding="0 0 0 0" HorizontalAlignment="Left"/>
-                            </Border>
-                            <Border Grid.Column="3" BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 1 0" Margin="0 0 -14 0" Padding="5">
-                                <TextBlock Text="{x:Bind Date, Converter={StaticResource DateTimeToStringConverter}}" Margin="15 0 0 0" Padding="0 0 0 0" HorizontalAlignment="Left"/>
-                            </Border>
-                            <Border Grid.Column="4" Margin="0 0 0 0" Padding="5">
-                                <TextBlock Text="{x:Bind Duration, Converter={StaticResource TimeSpanToStringConverter}}" Margin="25 0 0 0" Padding="0 0 0 0" HorizontalAlignment="Left"/>
-                            </Border>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid Grid.Row="2">
+            <ListView x:Name="TrackDataListView" BorderBrush="LightGoldenrodYellow" BorderThickness="1" MaxWidth="850">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:TrackDataItemModel">
+                        <Border BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 0 2" Padding="0" Margin="-16 0 -16 0" MaxWidth="850">
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 1 0" Margin="0 0 15 0" Padding="5">
+                                    <TextBlock Text="{x:Bind Id}" FontSize="16" Margin="-10 0 0 0" Padding="0" HorizontalAlignment="Left"/>
+                                </Border>
+                                <Border Grid.Column="1" BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 1 0" Margin="0 0 6 0" Padding="5">
+                                    <TextBlock Text="{x:Bind AppTitle}" FontSize="16" Margin="-5 0 0 0" Padding="0 0 0 0" HorizontalAlignment="Left"/>
+                                </Border>
+                                <Border Grid.Column="2" BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 1 0" Margin="0 0 -4 0" Padding="5">
+                                    <TextBlock Text="{x:Bind TabUrl}" FontSize="16" Margin="5 0 0 0" Padding="0 0 0 0" HorizontalAlignment="Left"/>
+                                </Border>
+                                <Border Grid.Column="3" BorderBrush="LightGoldenrodYellow" BorderThickness="0 0 1 0" Margin="0 0 -14 0" Padding="5">
+                                    <TextBlock Text="{x:Bind Date, Converter={StaticResource DateTimeToStringConverter}}" FontSize="16" Margin="15 0 0 0" Padding="0 0 0 0" HorizontalAlignment="Left"/>
+                                </Border>
+                                <Border Grid.Column="4" Margin="0 0 0 0" Padding="5">
+                                    <TextBlock Text="{x:Bind Duration, Converter={StaticResource TimeSpanToStringConverter}}" FontSize="16" Margin="25 0 0 0" Padding="0 0 0 0" HorizontalAlignment="Left"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid x:Name="LoadingOverlay"
+                  Background="#AAFFFFFF"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
+                <ProgressRing IsActive="True"
+                      Width="50"
+                      Height="50"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

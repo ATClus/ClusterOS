@@ -148,7 +148,7 @@
                 </Expander>
 
                 <Expander Header="Appearance"
-                          IsExpanded="False"
+                          IsExpanded="True"
                           Grid.Column="1"
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Stretch"
@@ -209,7 +209,7 @@
                 </Expander>
 
                 <Expander Header="Behavior"
-                          IsExpanded="False"
+                          IsExpanded="True"
                           Grid.Column="2"
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Stretch"
