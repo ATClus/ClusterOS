@@ -12,13 +12,13 @@
     <Grid AllowDrop="True"
           DragOver="Grid_DragOver"
           Drop="Grid_Drop"
-          Background="#66222222">
+          Background="Transparent">
         <StackPanel x:Name="ShortcutPanel"
             Orientation="Horizontal"
             Spacing="12"
             Padding="8"
             VerticalAlignment="Center"
             HorizontalAlignment="Left"/>
-
     </Grid>
+    
 </Window>

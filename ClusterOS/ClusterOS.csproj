@@ -27,6 +27,7 @@
     <Content Remove="Assets\logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Styles.xaml" />
     <None Remove="Views\CMSCreateView.xaml" />
     <None Remove="Views\CMSEditView.xaml" />
     <None Remove="Views\CMSView.xaml" />
@@ -44,7 +45,7 @@
     <None Remove="Views\TasksView.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
+    <AppxManifest Include="Package.Dev.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
   </ItemGroup>
@@ -125,6 +126,11 @@
     <ProjectReference Include="..\MarkdownLib\MarkdownLib.csproj" />
     <ProjectReference Include="..\TrayServiceLib\TrayServiceLib.csproj" />
     <ProjectReference Include="..\WinTracker\WinTracker.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\JournalEditView.xaml">
